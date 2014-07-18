@@ -11,7 +11,7 @@ describe Verse do
   
   it { should respond_to(:content) } 
   it { should respond_to(:english) } 
-  it { should respond_to(:index) } 
+  it { should respond_to(:position) } 
   
   it { should be_valid }
   
@@ -19,5 +19,5 @@ describe Verse do
     before { @verse.upanishad_id = nil }
     it { should_not be_valid }
   end
-      
+  
 end

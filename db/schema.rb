@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140717225029) do
+ActiveRecord::Schema.define(:version => 20140718010423) do
 
   create_table "upanishads", :force => true do |t|
     t.string   "name"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(:version => 20140717225029) do
   create_table "verses", :force => true do |t|
     t.text     "content"
     t.text     "english"
-    t.integer  "index"
+    t.integer  "position"
     t.integer  "upanishad_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "verses", ["upanishad_id", "index"], :name => "index_verses_on_upanishad_id_and_index"
+  add_index "verses", ["upanishad_id", "position"], :name => "index_verses_on_upanishad_id_and_index"
 
 end
