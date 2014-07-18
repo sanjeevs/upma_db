@@ -1,0 +1,15 @@
+<% provide(:title, 'All Upanishads') %>
+
+<h1> All upanishads </h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <% @upanishads.each do |upanishad| %>
+    <li>
+      <%= link_to upanishad.name, upanishad %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
