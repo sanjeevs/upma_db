@@ -4,12 +4,8 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-  <% @upanishads.each do |upanishad| %>
-    <li>
-      <%= link_to upanishad.name, upanishad %>
-    </li>
-  <% end %>
+<ul class="upanishads">
+  <%= render @upanishads %>
 </ul>
 
 <%= will_paginate %>

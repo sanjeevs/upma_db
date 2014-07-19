@@ -18,4 +18,21 @@ describe "UpanishadPages" do
       end
     end
   end
+
+  describe "show page" do
+    let(:upanishad) { FactoryGirl.create(:upanishad, name: "my-test") }
+    let!(:v1) { FactoryGirl.create(:verse, upanishad: upanishad, content: "Foo", english: "Bar") }
+    let!(:v2) { FactoryGirl.create(:verse, upanishad: upanishad, content: "Hello", english: "World") }
+
+    before { visit upanishad_path(upanishad) }
+
+    it { should have_selector('h1', text: upanishad.name) }
+    it { should have_selector('title', text: upanishad.name) }
+
+    describe "verses" do
+      it { should have_content(v1.content) }
+      it { should have_content(v2.content) }
+      it { should have_content(upanishad.verses.count) }
+    end
+   end
 end

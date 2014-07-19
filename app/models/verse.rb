@@ -3,6 +3,7 @@ class Verse < ActiveRecord::Base
   belongs_to :upanishad
 
   validates :upanishad_id, presence: true
+  validates :content, presence: true
 
   default_scope order: 'verses.position ASC'
 end

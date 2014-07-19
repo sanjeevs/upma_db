@@ -1,6 +1,8 @@
 class UpanishadsController < ApplicationController
+
   def show
-    @upanishads = Upanishad.new(params[:id])
+    @upanishad = Upanishad.find(params[:id])
+    @verses = @upanishad.verses.paginate(page: params[:page])
   end
 
   def index

@@ -19,5 +19,11 @@ describe Verse do
     before { @verse.upanishad_id = nil }
     it { should_not be_valid }
   end
+
+  describe 'with blank content' do
+    before { @verse.content = " " }
+    it { should_not be_valid }
+  end
   
+       
 end
