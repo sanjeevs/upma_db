@@ -7,9 +7,9 @@ namespace :db do
       Upanishad.create!(name: name)
     end
     upanishads = Upanishad.all(limit: 6)
-    50.times do
+    50.times do |n|
       content =  Faker::Lorem.sentence(40)
-      upanishads.each { |upanishad| upanishad.verses.create!(content: content) }
+      upanishads.each { |upanishad| upanishad.verses.create!(content: content, position: n) }
     end
   end
 end
