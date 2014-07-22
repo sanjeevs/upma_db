@@ -7,4 +7,11 @@ FactoryGirl.define do
     content "Lorem ipsum"
     upanishad
   end
+
+  factory :user do
+    name "Sanjeev Singh"
+    email "sanjeev@example.org"
+    password "foobar"
+    password_confirmation "foobar"
+ end
 end
