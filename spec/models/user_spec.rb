@@ -19,6 +19,11 @@ describe User do
   it { should respond_to(:password_confirmation) }
 
 
+  describe "remember_token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
+
   describe "when email is not present" do
     before { @user.email = ' ' }
     it { should_not be_valid }
