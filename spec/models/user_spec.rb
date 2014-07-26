@@ -17,7 +17,12 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-
+  it { should_not be_admin }
+  
+  describe "with admin attribute set to 'true'" do
+    before { @user.toggle!(:admin) }
+    it { should be_admin }
+  end
 
   describe "remember_token" do
     before { @user.save }
