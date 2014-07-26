@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
+  default_scope order: 'name ASC'
   private
   def create_remember_token
     self.remember_token = SecureRandom.urlsafe_base64

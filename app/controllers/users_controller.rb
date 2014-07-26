@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_admin, only: [:index, :destroy, :new, :create]
   def new
     @user = User.new
   end
@@ -27,4 +28,8 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  private
+    def signed_in_admin
+      redirect_to signin_path, notice: "Please sign in." unless admin?
+    end
 end

@@ -12,6 +12,10 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
+  def admin? 
+    (!get_current_user.nil? && @current_user.admin?) ? true : false
+  end
+
   def signed_in?
     !get_current_user.nil?
   end

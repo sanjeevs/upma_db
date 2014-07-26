@@ -63,6 +63,7 @@ describe "UserPages" do
       end
       it { should_not have_link('delete', href: user_path(:admin)) }
     end
+
    end
   end
 end
