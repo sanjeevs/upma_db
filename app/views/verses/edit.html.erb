@@ -6,13 +6,13 @@
     <%= form_for(@verse) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :content %>
-      <%= f.text_field :content %>
+      <%= f.text_area :content, size: "60x6" %>
 
       <%= f.label :category %>
-      <%= f.text_field :category %>
+      <%= f.select :category, options_for_select([["Verse", "verse"], ["Title", "title"], ["Prayer", "prayer"], ["Chapter", "chapter"],["Section", "section"]], @verse.category) %>
 
       <%= f.label :english %>
-      <%= f.text_field :english %>
+      <%= f.text_area :english, size: "60x6" %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
    <% end %>

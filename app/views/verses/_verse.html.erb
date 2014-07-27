@@ -1,3 +1,14 @@
 <li>
-  <span class="content"><%= h(verse.content).gsub(/\n/, '<br/>').html_safe %> </span>
+  <span class="content">
+    <%= h(verse.content).gsub(/\n/, '<br/>').html_safe %>
+    <% if signed_in? %>
+      <%= link_to "|Edit|", edit_verse_path(verse) %>
+    <% end %> 
+  </span>
+  <% if verse.english and verse.english.length > 0 %>
+    <br/>
+    <span class="english">
+    <p><%= verse.category %></p>
+    <span><%= h(verse.english).gsub(/\n/, '<br/>').html_safe %> </span>
+  <% end %>
 </li>

@@ -138,10 +138,14 @@ input, textarea, select, .uneditable-input {
     font-size: 125%;
   }
 }
-.content {
+.content  {
   display: block
 }
-
+.english {
+  display: block;
+  padding: 10px;
+  background-color: #b6c0d2;
+}
 .aside {
   textarea {
     height: 100px;

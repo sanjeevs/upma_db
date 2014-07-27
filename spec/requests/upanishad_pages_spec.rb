@@ -33,6 +33,16 @@ describe "UpanishadPages" do
       it { should have_content(v1.content) }
       it { should have_content(v2.content) }
       it { should have_content(upanishad.verses.count) }
+      it { should_not have_link('edit') }
+      describe "as a user" do
+        let(:user) { FactoryGirl.create(:user) }
+        before do
+          sign_in user 
+          visit upanishad_path(upanishad)
+        end 
+        it { should have_link('Edit') }
+      end
     end
    end
+
 end
