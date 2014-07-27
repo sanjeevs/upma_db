@@ -5,6 +5,7 @@ FactoryGirl.define do
 
   factory :verse do
     content "Lorem ipsum"
+    english "translate the upanishads"
     upanishad
   end
 
