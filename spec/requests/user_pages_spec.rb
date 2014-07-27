@@ -6,36 +6,48 @@ describe "UserPages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_selector('h1', text: 'Sign up') }
-    it { should have_selector('title', text: 'Sign up') }
+    
+    it { should have_selector('h1', text: 'Sign in') }
+    it { should have_selector('title', text: 'Sign in') }
 
-    let(:submit) { "Create my account" }
+    describe 'with role admin' do
+      let(:admin) { FactoryGirl.create(:admin) }
 
-    describe "with invalid information" do
-      it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
-      end
-    end
-
-    describe "with valid information" do
       before do
-        fill_in "Name", with: 'Example User'
-        fill_in "Email", with: 'user@example.org'
-        fill_in "Password", with: 'foobar'
-        fill_in "Confirmation", with: 'foobar'
+        sign_in admin
+      end
+      it { should have_selector('h1', text: 'Sign up') }
+      it { should have_selector('title', text: 'Sign up') }
+
+      let(:submit) { "Create my account" }
+
+      describe "with invalid information" do
+        it "should not create a user" do
+          expect { click_button submit }.not_to change(User, :count)
+        end
       end
 
-      it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
+      describe "with valid information" do
+        before do
+          fill_in "Name", with: 'Example User'
+          fill_in "Email", with: 'user@example.org'
+          fill_in "Password", with: 'foobar'
+          fill_in "Confirmation", with: 'foobar'
+        end
+
+        it "should create a user" do
+         expect { click_button submit }.to change(User, :count).by(1)
+        end
       end
-    end
+     end
    end
+
    describe "index" do
     before do
-      sign_in FactoryGirl.create(:user)
       FactoryGirl.create(:user, name: "Bob", email: "bob@example.org")
       FactoryGirl.create(:user, name: "Ben", email: "ben@example.org")
       visit users_path
+      sign_in FactoryGirl.create(:admin)
     end
 
     it { should have_selector('title', text: 'All users') }
@@ -44,26 +56,6 @@ describe "UserPages" do
      User.all.each do |user|
       page.should have_selector('li', text: user.name)
      end
-   end
-
-   describe 'delete links' do
-    it { should_not have_link('delete') }
-
-    describe "as an admin user" do
-      let(:admin) { FactoryGirl.create(:admin) }
-
-      before do
-        sign_in admin
-        visit users_path
-      end
-
-      it { should have_link('delete', href: user_path(User.first)) }
-      it "should be able to delete other user" do
-        expect { click_link('delete') }.to change(User, :count).by(-1)
-      end
-      it { should_not have_link('delete', href: user_path(:admin)) }
-    end
-
    end
   end
 end

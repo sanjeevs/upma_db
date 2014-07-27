@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 
   private
     def signed_in_admin
-      redirect_to signin_path, notice: "Please sign in." unless admin?
+      unless admin?
+        store_location
+        redirect_to signin_path, notice: "Please sign in." unless admin?
+      end
     end
 end

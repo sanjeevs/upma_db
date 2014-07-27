@@ -11,7 +11,7 @@ describe "StaticPages" do
     it { should have_link("Sign in", href: signin_path) }
     it { should_not have_link("Users", href: users_path) }
     describe "as an user" do
-      let(:user) { FactoryGril.create(:user) }
+      let(:user) { FactoryGirl.create(:user) }
       before do
         sign_in user
       end

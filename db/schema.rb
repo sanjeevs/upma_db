@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140726010023) do
+ActiveRecord::Schema.define(:version => 20140726231301) do
 
   create_table "upanishads", :force => true do |t|
     t.string   "name"
@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(:version => 20140726010023) do
     t.text     "english"
     t.integer  "position"
     t.integer  "upanishad_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "category",     :default => "shloka"
   end
 
   add_index "verses", ["upanishad_id", "position"], :name => "index_verses_on_upanishad_id_and_index"

@@ -12,7 +12,7 @@ describe Verse do
   it { should respond_to(:content) } 
   it { should respond_to(:english) } 
   it { should respond_to(:position) } 
-  
+  it { should respond_to(:category) }  
   it { should be_valid }
   
   describe "when upanishad_id is not present" do
@@ -24,6 +24,10 @@ describe Verse do
     before { @verse.content = " " }
     it { should_not be_valid }
   end
-  
+ 
+  describe 'with blank category' do
+    before { @verse.category = " " }
+    it { should_not be_valid }
+  end 
        
 end

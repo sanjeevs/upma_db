@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   before_save { |user| user.email = email.downcase }
+  before_save { |user| user.name = name.downcase }
   before_save :create_remember_token
 
   default_scope order: 'name ASC'
