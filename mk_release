@@ -1,0 +1,7 @@
+bundle exec rake assets:precompile
+git commit -a -m "releasing code"
+git push heroku master
+heroku pg:reset HEROKU_POSTGRESQL_PURPLE_URL --confirm upmadb
+heroku run rake db:migrate
+heroku run rake db:users
+heroku run rake db:initialize
