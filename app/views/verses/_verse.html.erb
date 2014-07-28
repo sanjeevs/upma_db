@@ -1,7 +1,9 @@
 <li>
   <span class="content">
     <%= h(verse.content).gsub(/\n/, '<br/>').html_safe %>
-    <p><%= "#{verse.chapter_num}:#{verse.section_num}:#{verse.verse_num}" %>
+    <% if verse.category == "verse" %>
+      <%= to_sanskrit_id(verse.chapter_num, verse.section_num, verse.verse_num) %> 
+    <% end %>
     <% if signed_in? %>
       <%= link_to "|Edit|", edit_verse_path(verse) %>
     <% end %> 
