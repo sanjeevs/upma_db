@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20140726231301) do
     t.text     "english"
     t.integer  "position"
     t.integer  "upanishad_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.string   "category",     :default => "shloka"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "category",     :default => "verse"
   end
 
   add_index "verses", ["upanishad_id", "position"], :name => "index_verses_on_upanishad_id_and_index"

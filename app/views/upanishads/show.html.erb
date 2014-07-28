@@ -10,9 +10,18 @@
   <div class="span8">
     <% if @upanishad.verses.any? %>
       <h3> Verses (<%= @upanishad.verses.count %>)</h3>
-      <ol class="verses">
-        <%= render @verses %>
-      </ol>
+      <ul class="verses">
+        <% chapter_num = section_num = verse_num = 1 %>
+        <% @verses.each do |verse| %>
+          <% verse.chapter_num = chapter_num %>
+          <% verse.section_num = section_num %>
+          <% verse.verse_num = verse_num %>
+          <%= render verse %>
+          <% chapter_num += 1 if verse.category == "chapter" %>
+          <% section_num += 1 if verse.category == "section" %>
+          <% verse.category == "verse" ? verse_num += 1 : verse_num = 1 %>
+        <% end %>
+      </ul>
       <%= will_paginate @verses %>
     <% end %>
   </div>
