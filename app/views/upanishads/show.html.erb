@@ -17,7 +17,10 @@
           <% verse.section_num = section_num %>
           <% verse.verse_num = verse_num %>
           <%= render verse %>
-          <% chapter_num += 1 if verse.category == "chapter" %>
+          <% if verse.category == "chapter" %>
+          <%  chapter_num += 1 %>
+          <%  section_num = 1  %>
+          <% end %> 
           <% section_num += 1 if verse.category == "section" %>
           <% verse.category == "verse" ? verse_num += 1 : verse_num = 1 %>
         <% end %>

@@ -11,7 +11,9 @@
   <% if verse.english and verse.english.length > 0 %>
     <br/>
     <span class="english">
-    <p><%= verse.category %></p>
     <span><%= h(verse.english).gsub(/\n/, '<br/>').html_safe %> </span>
+    <% if verse.category == "verse" %>
+      <%= to_english_id(verse.chapter_num, verse.section_num, verse.verse_num) %> 
+    <% end %> 
   <% end %>
 </li>

@@ -29,4 +29,7 @@ module ApplicationHelper
     "\u{0965} #{to_devanagri_number(chapter_num)}:#{to_devanagri_number(section_num)}:#{to_devanagri_number(verse_num)} \u{0965}"
   end
 
+  def to_english_id(chapter_num, section_num, verse_num)
+    "|| #{chapter_num}:#{section_num}:#{verse_num} ||"
+  end
 end
