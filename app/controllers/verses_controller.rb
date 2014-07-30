@@ -1,5 +1,5 @@
 class VersesController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
+  before_filter :signed_in_user, only: [:edit, :update, :destroy]
   def edit
     @verse = Verse.find(params[:id])
   end
@@ -13,4 +13,12 @@ class VersesController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    verse = Verse.find(params[:id])
+    upanishad_id = verse.upanishad.id
+    verse.destroy
+    redirect_to Upanishad.find(upanishad_id) 
+  end
+
 end

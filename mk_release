@@ -1,3 +1,4 @@
+bundle exec rake assets:clean
 bundle exec rake assets:precompile
 git commit -a -m "releasing code"
 git push heroku master

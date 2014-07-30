@@ -6,6 +6,9 @@
     <% end %>
     <% if signed_in? %>
       <%= link_to "|Edit|", edit_verse_path(verse) %>
+      <%= link_to "|Delete|", verse, method: :delete, 
+                                     confirm: "You sure?",
+                                     title: verse.content %>
     <% end %> 
   </span>
   <% if verse.english and verse.english.length > 0 %>

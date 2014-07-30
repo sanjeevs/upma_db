@@ -22,7 +22,9 @@
           <%  section_num = 1  %>
           <% end %> 
           <% section_num += 1 if verse.category == "section" %>
-          <% verse.category == "verse" ? verse_num += 1 : verse_num = 1 %>
+          <% unless verse.category == "other" %>
+            <% verse.category == "verse" ? verse_num += 1 : verse_num = 1 %>
+          <% end %>
         <% end %>
       </ul>
       <%= will_paginate @verses %>

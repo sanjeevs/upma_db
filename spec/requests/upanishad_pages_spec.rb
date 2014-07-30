@@ -41,6 +41,10 @@ describe "UpanishadPages" do
           visit upanishad_path(upanishad)
         end 
         it { should have_link('Edit') }
+        it { should have_link('Delete') }
+        it "should delete a verse" do
+          expect { click_link "Delete" }.should change(Verse, :count).by(-1)
+        end
       end
     end
    end
