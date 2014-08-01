@@ -1,5 +1,5 @@
 class VersesController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:edit, :update, :destroy, :create, :new]
   def edit
     @verse = Verse.find(params[:id])
   end
@@ -21,4 +21,23 @@ class VersesController < ApplicationController
     redirect_to Upanishad.find(upanishad_id) 
   end
 
+  def new
+    @verse = Upanishad.find(params[:upanishad_id].to_i).verses.build
+    @verse.position = params[:position].to_i + 1
+
+  end
+
+  def show
+  end
+    
+  def create
+    @verse = Verse.new(params[:verse])
+    @verse.upanishad_id = params[:upanishad_id].to_i
+    @verse.position = params[:position].to_i
+    if @verse.save
+      redirect_to Upanishad.find(@verse.upanishad_id) 
+    else  
+      render 'show'
+    end
+  end
 end

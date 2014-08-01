@@ -10247,11 +10247,11 @@ namespace :db do
    "इति महोपनिषत्समाप्ता॥"]}
     database.each do |key, verses| 
       upanishad = Upanishad.create!(name: key)
-      i = 100
+      i = 1000000
       puts "Starting Upanishad " + key + ". Verses=" + verses.size.to_s
       verses.each do |v|
          upanishad.verses.create!(content:v, position: i)
-         i += 100
+         i += 1000000
       end
     end
   end

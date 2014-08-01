@@ -1,0 +1,10 @@
+<% provide(:title, 'Show verse') %>
+<h1> Show verse </h1>
+
+<%= render 'shared/error_messages', object: @verse %>
+<p>Content: <%= @verse.content %> </p>
+<p>Category: <%= @verse.category %> </p>
+<p>English: <%= @verse.english %> </p>
+<p>Upanishad_id: <%= @verse.upanishad_id %> </p>
+<p>Position: <%= @verse.position %> </p>
+

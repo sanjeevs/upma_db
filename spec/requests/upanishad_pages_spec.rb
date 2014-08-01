@@ -23,7 +23,7 @@ describe "UpanishadPages" do
     let(:upanishad) { FactoryGirl.create(:upanishad, name: "my-test") }
     let!(:v1) { FactoryGirl.create(:verse, upanishad: upanishad, content: "Foo", english: "Bar") }
     let!(:v2) { FactoryGirl.create(:verse, upanishad: upanishad, content: "Hello", english: "World") }
-
+    
     before { visit upanishad_path(upanishad) }
 
     it { should have_selector('h1', text: upanishad.name) }
@@ -34,7 +34,7 @@ describe "UpanishadPages" do
       it { should have_content(v2.content) }
       it { should have_content(upanishad.verses.count) }
       it { should_not have_link('edit') }
-      describe "as a user" do
+      describe "sign in as a user" do
         let(:user) { FactoryGirl.create(:user) }
         before do
           sign_in user 
@@ -42,9 +42,21 @@ describe "UpanishadPages" do
         end 
         it { should have_link('Edit') }
         it { should have_link('Delete') }
+        it { should have_link('New') }
         it "should delete a verse" do
           expect { click_link "Delete" }.should change(Verse, :count).by(-1)
         end
+        describe "should add a verse" do
+          before { click_link 'New' }
+          it { should have_selector('h1', text: 'New verse') }
+          describe "add content" do
+            before { fill_in 'Content', with: "New Content"  }
+            it "increment the count" do
+              expect { click_button "New verse" }.should change(Verse, :count).by(1)
+            end
+          end
+        end
+
       end
     end
    end

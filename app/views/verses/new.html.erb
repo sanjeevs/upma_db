@@ -1,0 +1,23 @@
+<% provide(:title, 'New verse') %>
+<h1> New verse </h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@verse) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content, size: "60x6" %>
+
+      <%= f.label :category %>
+      <%= f.select :category, options_for_select([["Verse", "verse"], ["Title", "title"], ["Prayer", "prayer"], ["Chapter", "chapter"],["Section", "section"],["Other", "other"]], @verse.category) %>
+
+      <%= f.label :english %>
+      <%= f.text_area :english, size: "60x6" %>
+
+      <%= hidden_field_tag(:position, @verse.position) %>
+      <%= hidden_field_tag(:upanishad_id, @verse.upanishad_id) %>
+
+      
+      <%= f.submit "New verse", class: "btn btn-large btn-primary" %>
+   <% end %>
+ </div>
+</div>

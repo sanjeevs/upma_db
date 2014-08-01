@@ -8,7 +8,11 @@
       <%= link_to "|Edit|", edit_verse_path(verse) %>
       <%= link_to "|Delete|", verse, method: :delete, 
                                      confirm: "You sure?",
-                                     title: verse.content %>
+                                     title: "Deleting Verse!" %>
+      <%= link_to "|New|", controller: "verses", 
+                           action: "new", 
+                           position: verse.position,
+                           upanishad_id: verse.upanishad_id %>
     <% end %> 
   </span>
   <% if verse.english and verse.english.length > 0 %>
