@@ -11,7 +11,7 @@
     <% if @upanishad.verses.any? %>
       <h3> Verses (<%= @upanishad.verses.count %>)</h3>
       <ul class="verses">
-        <% chapter_num = section_num = verse_num = 1 %>
+        <% chapter_num = section_num = 0; verse_num = 1 %>
         <% @verses.each do |verse| %>
           <% verse.chapter_num = chapter_num %>
           <% verse.section_num = section_num %>
@@ -19,7 +19,7 @@
           <%= render verse %>
           <% if verse.category == "chapter" %>
           <%  chapter_num += 1 %>
-          <%  section_num = 1  %>
+          <%  section_num = 0  %>
           <% end %> 
           <% section_num += 1 if verse.category == "section" %>
           <% unless verse.category == "other" %>

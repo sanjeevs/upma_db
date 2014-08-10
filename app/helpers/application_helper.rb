@@ -26,10 +26,18 @@ module ApplicationHelper
   end
 
   def to_sanskrit_id(chapter_num, section_num, verse_num)
-    "\u{0965} #{to_devanagri_number(chapter_num)}:#{to_devanagri_number(section_num)}:#{to_devanagri_number(verse_num)} \u{0965}"
+    if section_num == 0
+      "\u{0965} #{to_devanagri_number(verse_num)} \u{0965}"
+    else
+      "\u{0965} #{to_devanagri_number(chapter_num)}:#{to_devanagri_number(section_num)}:#{to_devanagri_number(verse_num)} \u{0965}"
+    end
   end
 
   def to_english_id(chapter_num, section_num, verse_num)
-    "|| #{chapter_num}:#{section_num}:#{verse_num} ||"
+    if section_num == 0
+      "|| #{verse_num} ||"
+    else
+      "|| #{chapter_num}:#{section_num}:#{verse_num} ||"
+    end
   end
 end
