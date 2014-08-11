@@ -1,11 +1,13 @@
 <li>
+  <% bookmark = "#{verse.id}" %>
+  <a name="<%= bookmark %>"> </a>
   <span class="content">
     <%= h(verse.content).gsub(/\n/, '<br/>').html_safe %>
     <% if verse.category == "verse" %>
       <%= to_sanskrit_id(verse.chapter_num, verse.section_num, verse.verse_num) %> 
     <% end %>
     <% if signed_in? %>
-      <%= link_to "|Edit|", edit_verse_path(verse) %>
+      <%= link_to "|Edit|", edit_verse_path(verse) + "#" + bookmark  %>
       <%= link_to "|Delete|", verse, method: :delete, 
                                      confirm: "You sure?",
                                      title: "Deleting Verse!" %>

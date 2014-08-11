@@ -8,7 +8,7 @@ class VersesController < ApplicationController
     @verse = Verse.find(params[:id])
     if @verse.update_attributes(params[:verse])
       flash[:success] = 'Verse updated'
-      redirect_to Upanishad.find(@verse.upanishad_id) 
+      redirect_to "/upanishads/" + @verse.upanishad_id.to_s + "#" + @verse.id.to_s
     else
       render 'edit'
     end
@@ -35,7 +35,7 @@ class VersesController < ApplicationController
     @verse.upanishad_id = params[:upanishad_id].to_i
     @verse.position = params[:position].to_i
     if @verse.save
-      redirect_to Upanishad.find(@verse.upanishad_id) 
+      redirect_to "/upanishads/" + @verse.upanishad_id.to_s + "#" + @verse.id.to_s
     else  
       render 'show'
     end
