@@ -19,7 +19,7 @@
           <%= render verse %>
           <% if verse.category == "chapter" %>
           <%  chapter_num += 1 %>
-          <%  section_num = 1  %>
+          <%  section_num = 0  %>
           <% end %> 
           <% section_num += 1 if verse.category == "section" %>
           <% unless verse.category == "other" %>
