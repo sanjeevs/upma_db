@@ -9,7 +9,7 @@
       <%= f.text_area :content, size: "60x6" %>
 
       <%= f.label :category %>
-      <%= f.select :category, options_for_select([["Verse", "verse"], ["Title", "title"], ["Prayer", "prayer"], ["Chapter", "chapter"],["Section", "section"],["Other", "other"]], @verse.category) %>
+      <%= f.select :category, options_for_select([["Verse", "verse"], ["Title", "title"], ["Prayer", "prayer"], ["Chapter", "chapter"],["Section", "section"],["Chapter+Section", "chapter_section"],["Other", "other"]], @verse.category) %>
 
       <%= f.label :english %>
       <%= f.text_area :english, size: "60x6" %>
