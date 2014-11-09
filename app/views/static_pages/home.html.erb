@@ -1,8 +1,46 @@
 <% provide(:title, 'Home') %>
+
 <div class="center hero-unit">
   <h2>Welcome to Upanishad Database</h2>
   <h3>This is the internal site for volunteers working on <a href="http://www.upanishad.info">Upanishad Info</a></h3>
-  <h4>Please sign in using the link above.</h4>
+  <%= link_to "Sign In", '/signin', class: "btn btn-large btn-primary" %>
+</div>
+
+<div class="container">
+  <h3>Current Status</h3>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Upanishad Name</th>
+        <th>Num Lines</th>
+        <th>Num Translated</th>
+        <th>Completed</th>
+      </tr>
+     </thead>
+     <tbody>
+
+      <% sum = done = 0 %>
+      <% Upanishad.all.each do |upanishad| %>
+      <tr>
+        <td><%= upanishad.name %></td>
+        <td><%= total = upanishad.verses.count %></td>
+        <td><%= complete = upanishad.verses.where("english IS NOT NULL").count %></td>
+        <td><%= total > 0 ? (complete*100.0/total).round(2) : 0 %>%</td>
+        <% sum += total; done += complete %>
+      </tr>
+      <% end %>
+      <tr>
+        <td><b>All Upanishads</b> </td>
+        <td><b><%= sum %></b></td>
+        <td><b><%= done %></b></td>
+        <td><b><%= (done*100.0/sum).round(2) %>%</b></td>
+      </tr>
+
+     </tbody>
+    </table>
+        
+
+ </div>
 </div>
 
 
