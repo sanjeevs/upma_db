@@ -10,6 +10,7 @@
   <div class="span8">
     <% if @upanishad.verses.any? %>
       <h3> Verses (<%= @upanishad.verses.count %>)</h3>
+      <h3> <%= link_to "English Source", "http://upanishad.info/tiki-index.php?page=ENG_#{@upanishad.name}", target: "_blank" %> </h3>
       <ul class="verses">
         <% chapter_num = section_num = 0; verse_num = 1 %>
         <% @verses.each do |verse| %>
