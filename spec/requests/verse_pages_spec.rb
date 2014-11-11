@@ -19,15 +19,18 @@ describe "VersePages" do
       describe 'edit information' do
         let(:new_content) { "New Content" }
         let(:new_english) { "New English" }
+        let(:new_comment) { "New Comment" }
 
         before do
           fill_in "Content", with: new_content
           fill_in "English", with: new_english
+          fill_in "Comment", with: new_comment
           click_button 'Save changes'
         end
 
         specify { verse.reload.content.should == new_content }
         specify { verse.reload.english.should == new_english }
+        specify { verse.reload.comment.should == new_comment}
       end
 
     end

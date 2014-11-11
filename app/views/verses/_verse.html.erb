@@ -20,9 +20,19 @@
   <% if verse.english and verse.english.length > 0 %>
     <br/>
     <span class="english">
-    <span><%=h verse.english.gsub(/"([^"]*)"/, '<i>\1</i>').gsub(/\n/, '<br/>').html_safe %> </span>
-    <% if verse.category == "verse" %>
-      <%= to_english_id(verse.chapter_num, verse.section_num, verse.verse_num) %> 
-    <% end %> 
+      <span><%=h verse.english.gsub(/"([^"]*)"/, '<i>\1</i>').gsub(/\n/, '<br/>').html_safe %> </span>
+      <% if verse.category == "verse" %>
+        <%= to_english_id(verse.chapter_num, verse.section_num, verse.verse_num) %> 
+      <% end %>
+    </span> 
+    <span class="timestamp">
+      Edited <%= time_ago_in_words(verse.updated_at) %> ago
+    </span>
+  <% end %>
+  <% if verse.comment and verse.comment.length > 0 %>
+    <br/>
+    <span class="comment">
+      <%= verse.comment %>
+    </span
   <% end %>
 </li>

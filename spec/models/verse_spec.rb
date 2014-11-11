@@ -13,6 +13,7 @@ describe Verse do
   it { should respond_to(:english) } 
   it { should respond_to(:position) } 
   it { should respond_to(:category) }  
+  it { should respond_to(:comment) }  
   it { should be_valid }
   
   describe "when upanishad_id is not present" do
