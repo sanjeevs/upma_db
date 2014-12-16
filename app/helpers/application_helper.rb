@@ -25,17 +25,22 @@ module ApplicationHelper
     digits.join
   end
 
+  # if there is a change to this function, then must do the same to "to_english_id"
   def to_sanskrit_id(chapter_num, section_num, verse_num)
-    if section_num == 0
+    if section_num == 0 && chapter_num == 0
       "\u{0965} #{to_devanagri_number(verse_num)} \u{0965}"
+    elsif section_num == 0 
+      "\u{0965} #{to_devanagri_number(chapter_num)}:#{to_devanagri_number(verse_num)} \u{0965}"
     else
       "\u{0965} #{to_devanagri_number(chapter_num)}:#{to_devanagri_number(section_num)}:#{to_devanagri_number(verse_num)} \u{0965}"
     end
   end
 
   def to_english_id(chapter_num, section_num, verse_num)
-    if section_num == 0
+    if section_num == 0 && chapter_num == 0
       "|| #{verse_num} ||"
+    elsif section_num == 0
+      "|| #{chapter_num}:#{verse_num} ||"
     else
       "|| #{chapter_num}:#{section_num}:#{verse_num} ||"
     end
