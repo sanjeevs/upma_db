@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:microposts) }
   it { should_not be_admin }
   
   describe "with admin attribute set to 'true'" do
@@ -103,4 +104,19 @@ describe User do
       specify { user_with_invalid_password.should be_false }
     end 
    end
+   describe "micrpost associations" do
+    before { @user.save }
+
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+
+    let!(:new_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the micropost in the right order" do
+      @user.microposts.should == [new_micropost, older_micropost]
+    end
+  end
 end
