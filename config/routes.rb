@@ -1,5 +1,6 @@
 UpmaDb::Application.routes.draw do
   resources :users
+  resources :microposts
   resources :sessions, only: [:new, :create, :destroy]
   resources :verses, only: [:edit, :update, :destroy, :new, :create, :show]
   root to: 'static_pages#home'

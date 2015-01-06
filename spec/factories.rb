@@ -21,6 +21,6 @@ FactoryGirl.define do
   factory :micropost do
     content "Lorem ipsum"
     title "dummy title"
-    user
+    author "anonymous"
   end
 end

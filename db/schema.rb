@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150106124943) do
+ActiveRecord::Schema.define(:version => 20150106133253) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(:version => 20150106124943) do
     t.string   "tags"
     t.string   "verse"
     t.string   "translation"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "author"
+    t.datetime "published_at"
   end
 
   create_table "upanishads", :force => true do |t|

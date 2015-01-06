@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
 
   has_secure_password
-  has_many :microposts
 
   validates :name, presence: true, length: { maximum: 40 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
