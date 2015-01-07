@@ -1,0 +1,37 @@
+<% provide(:title, "Create Post") %>
+
+<h1> New Post </h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@micropost) do |f| %>
+      <%= render 'shared/error_messages', object: @micropost %>
+      <%= f.label :title%>
+      <%= f.text_field :title%>
+
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+
+      <%= f.label :published_at %>
+      <%= f.text_field :published_at %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+      
+      <%= f.label :verse %>
+      <%= f.text_field :verse %>
+      
+      <%= f.label :translation %>
+      <%= f.text_field :translation %>
+      
+      <%= f.label :tweet%>
+      <%= f.text_field :tweet%>
+      
+      <%= f.label :tags %>
+      <%= f.text_field :tags %>
+      
+      <%= f.submit "Create post", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div> 
+

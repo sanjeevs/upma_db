@@ -13,6 +13,19 @@ namespace :db do
       User.create(name: name, email: email, password: password, 
         password_confirmation: password)
     end
+    50.times do |n|
+      title = Faker::Name.name
+      content = Faker::Lorem.paragraph
+      author = Faker::Name.name
+      tweet = Faker::Lorem.sentence(1)
+      tags = Faker::Lorem.sentence 
+      verse = Faker::Lorem.sentence
+      translation = Faker::Lorem.sentence
+      published_at = Time.now
+      Micropost.create(title: title, content: content, author: author,
+        tweet: tweet, tags: tags, verse: verse, translation: translation,
+        published_at: published_at)
+    end
     Upanishad.create(name: "ExampleBook")
     107.times do |n|
       name = Faker::Name.name
@@ -23,5 +36,6 @@ namespace :db do
       content =  Faker::Lorem.sentence(40)
       upanishads.each { |upanishad| upanishad.verses.create!(content: content, position: n) }
     end
+
   end
 end
