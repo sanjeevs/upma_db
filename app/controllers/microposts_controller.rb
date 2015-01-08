@@ -5,6 +5,8 @@ class MicropostsController < ApplicationController
 
   def new
     @micropost = Micropost.new
+    @micropost.author = "Swami Chidananda"
+    @micropost.published_at = Time.now
   end
 
   def index
@@ -21,4 +23,17 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def edit
+    @micropost = Micropost.find(params[:id])
+  end
+
+  def update
+    @micropost = Micropost.find(params[:id])
+    if @micropost.update_attributes(params[:micropost])
+      flash[:success] = "Post Updated"
+      redirect_to @micropost
+    else
+      render 'edit'
+    end
+  end
 end

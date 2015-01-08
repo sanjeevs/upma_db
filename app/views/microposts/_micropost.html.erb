@@ -1,10 +1,12 @@
-<li>
- <span class="content"><%= micropost.title %></span> 
- <span class="content"><%= micropost.author%> </span> 
- <span class="timestamp"><%= micropost.published_at%></span>
- <span class="content"><%= micropost.content %></span>
- <span class="content"> <%= micropost.verse %> </span>
- <span class="content"> <%= micropost.translation %> </span>
- <span class="content"> <%= micropost.tweet %></span>
- <span class="content"> <%= micropost.tags %> </span>
-</li>
+<h3>Title: <%= micropost.title %></h3> 
+<h4>Author: <%= micropost.author%> </h4> 
+<span class="timestamp">Published At: <%= micropost.published_at%></span>
+<h4>Content: </h4> <p><%= micropost.content.html_safe %></p>
+<h4>Verse</h4> <span class="content"><%= micropost.verse %> </span>
+<h4>Translation</h4><span class="content"><%= micropost.translation %> </span>
+<h4>Tweet</h4> <span class="content"><%= micropost.tweet %></span>
+<h5> Tags: <%= micropost.tags %> </h5>
+<% if signed_in? %>
+  <%= link_to "|Edit| ", edit_micropost_path(micropost) %>
+  <%= link_to " New| ", controller: "microposts", action: "new" %>
+<% end %>  

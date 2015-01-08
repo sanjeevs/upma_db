@@ -4,7 +4,20 @@
 <%= will_paginate %>
 
 <ul class="posts">
-  <%= render @microposts %>
+  <% @microposts.each do |micropost| %>
+    <li>
+     <h4><%= micropost.title %></h4> 
+     <h5><%= micropost.author%> </h5> 
+     <span class="timestamp"><%= micropost.published_at%></span>
+     <span class="content"><%= micropost.content.slice(0, 50) + " ..." %></span>
+     <h6> <%= micropost.tags %> </h6>
+     <%= link_to "|More| ", micropost %>
+     <% if signed_in? %>
+      <%= link_to "|Edit| ", edit_micropost_path(micropost) %>
+      <%= link_to "|New| ", controller: "microposts", action: "new" %>
+     <% end %>
+    </li>
+  <% end %>
 </ul>
 
 <%= will_paginate %>
