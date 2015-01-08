@@ -3,6 +3,9 @@
 
 <%= will_paginate %>
 
+<% if signed_in? %>
+  <%= link_to "Create New Post? ", controller: "microposts", action: "new" %>
+<% end %>
 <ul class="posts">
   <% @microposts.each do |micropost| %>
     <li>
