@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150106133253) do
+ActiveRecord::Schema.define(:version => 20150108035708) do
 
   create_table "microposts", :force => true do |t|
-    t.string   "content"
+    t.text     "content",      :limit => 255
     t.string   "title"
-    t.string   "tweet"
+    t.text     "tweet",        :limit => 255
     t.string   "tags"
-    t.string   "verse"
-    t.string   "translation"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text     "verse",        :limit => 255
+    t.text     "translation",  :limit => 255
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.text     "author"
     t.datetime "published_at"
   end
