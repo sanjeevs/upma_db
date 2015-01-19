@@ -6,6 +6,7 @@ describe Micropost do
   subject { micropost }
 
   it { should respond_to(:content) }
+  it { should respond_to(:urn) }
   it { should be_valid }
 
   describe "when author is not present" do
@@ -26,5 +27,10 @@ describe Micropost do
   describe "with tweet too long" do
     before { micropost.tweet = "a" * 141 }
     it { should_not be_valid }
+  end
+
+  describe "blank urn" do
+    before { micropost.urn = "" }
+    it { micropost.urn == "verse:0"}
   end
 end

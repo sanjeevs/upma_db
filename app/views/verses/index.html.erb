@@ -1,0 +1,17 @@
+<% provide(:title, 'All Verses') %>
+
+<h1> All verses</h1>
+
+<%= will_paginate %>
+
+<ul class="verses">
+  <% @verses.each do |verse| %>
+    <li>
+      <p><%= link_to "verse:#{verse.id}", verse %></p>
+      <p><small><%= verse.upanishad.name %></small> </p>
+      <p><%= verse.content %> </p>
+    </li>
+  <% end %>
+</ul>
+  
+<%= will_paginate %>

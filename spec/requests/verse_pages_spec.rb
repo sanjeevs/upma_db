@@ -4,6 +4,21 @@ describe "VersePages" do
   let(:upanishad) { FactoryGirl.create(:upanishad, name: 'my-test') }
   let(:verse) { FactoryGirl.create(:verse, upanishad: upanishad, content: 'Foo', english: 'Bar') }
   subject { page }
+
+  describe 'show' do
+    before { visit verse_path(verse) }
+
+    describe 'it should show the verse' do
+      it { should have_selector('title', text: 'Show verse') }
+      it { should have_content('Foo') }
+    end
+  end
+
+  describe 'index' do
+    before { visit verses_path }
+    it { should have_selector('title', text: 'All Verses') }
+  end
+
   describe 'edit' do
     before { visit edit_verse_path(verse) }
     

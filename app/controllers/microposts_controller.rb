@@ -7,6 +7,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.new
     @micropost.author = "Swami Chidananda"
     @micropost.published_at = Time.now
+    @micropost.urn = "verse:0"
   end
 
   def index
@@ -15,6 +16,9 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = Micropost.new(params[:micropost])
+    @micropost.urn = "verse:0" if @micropost.urn.blank?
+    m =  @micropost.urn.match(/\A\d+\z/)
+    @micropost.urn = "verse:#{m[0]}" if m
     if @micropost.save
       flash[:success] = "Created new post"
       redirect_to @micropost

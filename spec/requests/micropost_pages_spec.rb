@@ -7,9 +7,8 @@ describe "micropost pages" do
     let(:micropost) { FactoryGirl.create(:micropost) }
     before { visit micropost_path(micropost) }
 
-    it { should have_selector('h2', text: micropost.title) }
-    it { should have_selector('h2', text: micropost.author) }
-    it { should have_selector('h2', text: micropost.content) }
+    it { should have_selector('h3', text: micropost.title) }
+    it { should have_selector('h4', text: micropost.author) }
   end
 
   describe "create a micropost" do

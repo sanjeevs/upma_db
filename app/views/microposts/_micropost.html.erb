@@ -6,6 +6,7 @@
 <h4>Translation</h4><span class="content"><%= micropost.translation %> </span>
 <h4>Tweet</h4> <span class="content"><%= micropost.tweet %></span>
 <h5> Tags: <%= micropost.tags %> </h5>
+<h5> Urn: <%= micropost.urn %> </h5>
 <% if signed_in? %>
   <%= link_to "|Edit| ", edit_micropost_path(micropost) %>
   <%= link_to " New| ", controller: "microposts", action: "new" %>

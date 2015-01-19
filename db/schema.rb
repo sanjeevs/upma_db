@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150108035708) do
+ActiveRecord::Schema.define(:version => 20150117164859) do
 
   create_table "microposts", :force => true do |t|
     t.text     "content",      :limit => 255
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20150108035708) do
     t.datetime "updated_at",                  :null => false
     t.text     "author"
     t.datetime "published_at"
+    t.string   "urn"
   end
 
   create_table "upanishads", :force => true do |t|

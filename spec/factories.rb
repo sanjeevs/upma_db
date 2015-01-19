@@ -22,5 +22,6 @@ FactoryGirl.define do
     content "Lorem ipsum"
     title "dummy title"
     author "anonymous"
+    urn "verse:0"
   end
 end

@@ -28,8 +28,14 @@ class VersesController < ApplicationController
   end
 
   def show
+    @verse = Verse.find(params[:id])
+    @upanishad = Upanishad.find(@verse.upanishad_id)
   end
-    
+  
+  def index
+    @verses = Verse.order('id, position').paginate(page: params[:page])
+  end
+
   def create
     @verse = Verse.new(params[:verse])
     @verse.upanishad_id = params[:upanishad_id].to_i
