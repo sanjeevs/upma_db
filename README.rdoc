@@ -4,14 +4,15 @@ This is the database for upanishad.info. The intent is that we store all our sta
 ie non changing content in a generic sql data base. Then depending on the platform 
 like "Drupal" we can generate scripts that can populate the database.
 
-== NOTICE  ==
+== NOTICE
 The production database is stored in directory backup/postgre_db
 
 I am no longer hosting the web site on heroku.
 
 == Getting Started
 
-1. <tt>git clone https://github.com/sanjeevs/upma_db </tt>
+1. Clone this repository
+   git clone https://github.com/sanjeevs/upma_db
 
 2. cd upma_db. We are using ruby 1.9.2-p550
    You may get the message that "You are using '.rvmrc' which requires testing.
